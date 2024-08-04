@@ -1,0 +1,38 @@
+{
+  "name": "playwrightcucumber",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean:reports": "rm -rf test-result && mkdir -p test-result",
+    "generate:report": "npx ts-node ./src/helper/reportGenerate.ts",
+    "pretest": "npm run clean:reports",
+    "posttest": "npm run generate:report",
+    "execute:script": "cucumber-js test",
+    "test": "npm run execute:script || npm run posttest",
+    "execute:script:failed": "cucumber-js -p rerun @rerun.txt",
+    "test:failed": "npm run execute:script || npm run generate:report"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JDario19/playwrightCucumber.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JDario19/playwrightCucumber/issues"
+  },
+  "homepage": "https://github.com/JDario19/playwrightCucumber#readme",
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.8.0",
+    "@playwright/test": "^1.45.3",
+    "@types/node": "^22.1.0",
+    "mkdir": "^0.0.2",
+    "mkdirp": "^3.0.1",
+    "multiple-cucumber-html-reporter": "^3.7.0",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2"
+  }
+}
